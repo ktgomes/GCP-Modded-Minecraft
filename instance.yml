@@ -57,7 +57,7 @@ resources:
           # start container
           sudo docker start mc
           if [ $? -ne 0 ]; then
-            sudo docker run -d -v /mcs:/data -it -e TYPE=FORGE -e EULA=TRUE -p 25565:25565 --name mc itzg/minecraft-server
+            sudo docker run -d -v /mcs:/data -it -e TYPE=FORGE -e VERSION=1.13.2 -e FORGEVERSION=25.0.52 -e EULA=TRUE -p 25565:25565 --name mc itzg/minecraft-server
           fi
 
 - name: firewall
