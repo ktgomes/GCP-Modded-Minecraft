@@ -34,7 +34,7 @@ cd ..
 
 # add permssions to cloud function service role, if possible
 echo "[*] grant cloud function service role access to compute and dialogflow"
-TMP=$(gcloud iam service-accounts list --filter "app engine" | grep @ | rev | cut -d" " -f1 | rev)
+TMP=$(gcloud iam service-accounts list --filter "app engine" | grep @ | rev | cut -d" " -f3 | rev)
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT  --member serviceAccount:$TMP --role "roles/compute.instanceAdmin"
 
 # retrieve the server IP
