@@ -54,10 +54,12 @@ resources:
             sudo apt-get install docker-ce -y
           fi
 
+          sudo docker build --tag skyfactory4 /home/o0sirensong0o/
+
           # start container
           sudo docker start mc
           if [ $? -ne 0 ]; then
-          sudo docker run -d -v /:/data -it -e OPS=o0SirenSong0o -e EULA=TRUE -p 25565:25565 --name mc DockerFile
+            sudo docker run -d -v $(pwd):/data -it -e OPS=o0SirenSong0o -e EULA=TRUE -p 25565:25565 --name mc skyfactory4
           fi
 
 - name: firewall
