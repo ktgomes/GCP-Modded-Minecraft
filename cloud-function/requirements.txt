@@ -1,0 +1,2 @@
+mcrcon
+google-api-python-client
