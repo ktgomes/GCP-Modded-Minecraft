@@ -61,7 +61,7 @@ resources:
           # start container
           sudo docker start mc
           if [ $? -ne 0 ]; then
-            sudo docker run -d -it -v /opt/minecraft:/data -e ENABLE_RCON=true -e RCON_PASSWORD=PLACEHOLDER_PASSWORD -e OPS=o0SirenSong0o -e MEMORY=5G -e TYPE=CURSEFORGE -e CF_SERVER_MOD=https://www.curseforge.com/minecraft/modpacks/skyfactory-4/download/2725984/file -e EULA=TRUE -p 25575:25575 -p 25565:25565 --name mc --log-driver=gcplogs itzg/minecraft-server
+            sudo docker run -d -it -v /opt/minecraft:/data -e ENABLE_RCON=true -e RCON_PASSWORD=PLACEHOLDER_PASSWORD -e MEMORY=5G -e TYPE=CURSEFORGE -e CF_SERVER_MOD=https://www.curseforge.com/minecraft/modpacks/skyfactory-4/download/2725984/file -e EULA=TRUE -p 25575:25575 -p 25565:25565 --name mc --log-driver=gcplogs itzg/minecraft-server
           fi
 
 - name: firewall
