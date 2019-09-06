@@ -5,7 +5,7 @@ echo "[*] create compute instance and firewall rules"
 gcloud deployment-manager deployments create mc --config instance.yml
 
 # Copy local docker file to instance
-gcloud compute scp Dockerfile minecraft-vm:/home/o0sirensong0o/
+#gcloud compute scp Dockerfile minecraft-vm:/home/o0sirensong0o/
 
 # retrieve the server IP
 echo "[*] done..."

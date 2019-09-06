@@ -6,7 +6,7 @@ resources:
   name: minecraft-vm
   properties:
     zone: us-central1-f
-    machineType: https://www.googleapis.com/compute/v1/projects/minecraft-server-mod/zones/us-central1-f/machineTypes/g1-small
+    machineType: https://www.googleapis.com/compute/v1/projects/minecraft-server-mod/zones/us-central1-f/machineTypes/n1-standard-2
     serviceAccounts:
     - scopes:
       - "https://www.googleapis.com/auth/logging.write"
@@ -54,12 +54,14 @@ resources:
             sudo apt-get install docker-ce -y
           fi
 
-          sudo docker build --tag skyfactory4 /home/o0sirensong0o/
+          sudo mkdir /opt/minecraft
+          sudo chmod g+rwx /opt/minecraft
+          sudo chgrp 0 /opt/minecraft
 
           # start container
           sudo docker start mc
           if [ $? -ne 0 ]; then
-            sudo docker run -d -v $(pwd):/data -it -e OPS=o0SirenSong0o -e EULA=TRUE -p 25565:25565 --name mc skyfactory4
+            sudo docker run -d -it -v /opt/minecraft:/data -e OPS=o0SirenSong0o -e MEMORY=5G -e TYPE=CURSEFORGE -e CF_SERVER_MOD=https://www.curseforge.com/minecraft/modpacks/skyfactory-4/download/2725984/file -e EULA=TRUE -p 25565:25565 --name mc itzg/minecraft-server
           fi
 
 - name: firewall
