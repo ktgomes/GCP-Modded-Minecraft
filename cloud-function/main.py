@@ -15,8 +15,8 @@ entrypoint for cloudfunction
 and event handling
 """
 def log_handler(event, context):
-    raw_event = json.loads(base64.b64decode(event['data']).decode('utf-8'))
     print(event)
+    raw_event = json.loads(base64.b64decode(event['data']).decode('utf-8'))
     raw_message = raw_event['jsonPayload']['message']
 
     # disconnect message
@@ -53,10 +53,15 @@ def stop_instance():
     return compute.instances().stop(project=PROJECT_ID, zone=ZONE, instance='minecraft-vm').execute()
 
 def shut_it_down():
+    print('here')
     ip = lookup_instance()
+    print(ip)
     resp = execute_rcon("/list", ip)
+    print('it connected!')
     number = re.findall('There are (\d+) of a max \d+ players online', resp)[0]
+    print(number)
     if number == "0":
+        print('stopping instance')
         execute_rcon("/stop", ip)
         time.sleep(10)
         return stop_instance()
